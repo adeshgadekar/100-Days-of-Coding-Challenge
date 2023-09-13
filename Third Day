@@ -1,0 +1,107 @@
+Largest number possible
+
+Given two numbers 'N' and 'S' , find the largest number that can be formed with 'N' digits and whose sum of digits should be equals to 'S'. Return -1 if it is not possible.
+
+Example 1:
+
+Input: N = 2, S = 9
+Output: 90
+Explaination: It is the biggest number 
+with sum of digits equals to 9.
+Example 2:
+
+Input: N = 3, S = 20
+Output: 992
+Explaination: It is the biggest number 
+with sum of digits equals to 20.
+
+Solution :
+
+class Solution{
+    static String findLargest(int N, int S){
+         if(S>N*9 || (S==0 && N>1)) return "-1";
+        
+        StringBuilder sb=new StringBuilder("");
+        
+        while(S>=9)
+        {
+            sb.append("9");
+            N-=1;
+            S-=9;
+        }
+        
+        while(N>0)
+        {
+            if(S!=0)
+            {
+                sb.append(String.valueOf(S));
+                S=0;
+            }
+            else
+                sb.append("0");
+                
+            N-=1;
+        }
+        
+        return sb.toString();
+        
+    }
+}
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Remove duplicates in small prime array
+
+Given an array consisting of only prime numbers, remove all duplicate numbers from it. 
+
+Example 1:
+
+Input:
+N = 6
+A[] = {2,2,3,3,7,5}
+Output: 2 3 7 5
+Explanation: After removing the duplicate
+2 and 3 we get 2 3 7 5.   write java program
+
+
+Solution : 
+
+class Solution
+{
+    ArrayList<Integer> removeDuplicate(int arr[], int n)
+    {
+        ArrayList<Integer> result = new ArrayList<>();
+        HashSet<Integer> uniqueSet = new HashSet<>();
+
+        for (int i = 0; i < n; i++) {
+            if (isPrime(arr[i]) && !uniqueSet.contains(arr[i])) {
+                uniqueSet.add(arr[i]);
+                result.add(arr[i]);
+            }
+        }
+
+        return result;
+    }
+
+    
+    public boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num <= 3) {
+            return true;
+        }
+        if (num % 2 == 0 || num % 3 == 0) {
+            return false;
+        }
+
+        for (int i = 5; i * i <= num; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
