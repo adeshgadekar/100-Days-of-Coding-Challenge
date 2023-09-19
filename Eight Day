@@ -1,0 +1,77 @@
+Find first set bit
+Given an integer N. The task is to return the position of first set bit found from the right side in the binary representation of the number.
+Note: If there is no set bit in the integer N, then return 0 from the function.  
+
+Example 1:
+
+Input: 
+N = 18
+Output: 
+2
+Explanation: 
+Binary representation of 18 is 010010,the first set bit from the right side is at position 2.
+Example 2:
+
+Input: 
+N = 12 
+Output: 
+3 
+Explanation: 
+Binary representation of  12 is 1100, the first set bit from the right side is at position 3.
+
+Solution : 
+
+class Solution
+{
+    //Function to find position of first set bit in the given number.
+    public static int getFirstSetBit(int n){
+            
+        int pos=1;
+        
+        while(n!=0)
+        {
+            int bit=n%2;
+            
+            if(bit==1) return pos;
+            
+            pos++;
+            n/=2;
+        }
+            
+            return 0;
+            
+    }
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Replace all 0's with 5
+
+You are given an integer N. You need to convert all zeroes of N to 5.
+
+Example 1:
+
+Input:
+N = 1004
+Output: 1554
+Explanation: There are two zeroes in 1004
+on replacing all zeroes with "5", the new
+number will be "1554".
+Example 2:
+
+Input:
+N = 121
+Output: 121
+Explanation: Since there are no zeroes in
+"121", the number remains as "121".
+
+Solution : 
+
+class GfG {
+    int convertfive(int num) {
+        String st=String.valueOf(num);
+        String s1=st.replaceAll("0","5");
+        int result=Integer.parseInt(s1);  
+        return result;
+    }
+}
