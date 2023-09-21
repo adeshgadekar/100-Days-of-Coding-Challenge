@@ -1,0 +1,105 @@
+Union of two arrays
+
+Given two arrays a[] and b[] of size n and m respectively. The task is to find the number of elements in the union between these two arrays.
+Union of the two arrays can be defined as the set containing distinct elements from both the arrays. If there are repetitions, then only one occurrence of element should be printed in the union.
+
+Note : Elements are not necessarily distinct.
+
+Example 1:
+
+Input:
+5 3
+1 2 3 4 5
+1 2 3
+Output: 
+5
+Explanation: 
+1, 2, 3, 4 and 5 are the
+elements which comes in the union set
+of both arrays. So count is 5.
+Example 2:
+
+Input:
+6 2 
+85 25 1 32 54 6
+85 2 
+Output: 
+7
+Explanation: 
+85, 25, 1, 32, 54, 6, and
+2 are the elements which comes in the
+union set of both arrays. So count is 7.
+
+Solution :
+
+class Solution{
+    public static int doUnion(int a[], int n, int b[], int m) 
+    {
+        Set<Integer> set = new HashSet<Integer>();
+        int length = n>m ? n : m;
+        for(int i = 0 ; i < length ; i++){
+            if(i<n)
+               set.add(a[i]);
+               
+             if(i<m)
+               set.add(b[i]);
+        }
+        return set.size();
+
+    }
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+
+Reverse array in groups
+Given an array arr[] of positive integers of size N. Reverse every sub-array group of size K.
+
+Note: If at any instance, there are no more subarrays of size greater than or equal to K, then reverse the last subarray (irrespective of its size). You shouldn't return any array, modify the given array in-place.
+
+Example 1:
+
+Input:
+N = 5, K = 3
+arr[] = {1,2,3,4,5}
+Output: 3 2 1 5 4
+Explanation: First group consists of elements
+1, 2, 3. Second group consists of 4,5.
+ 
+
+Example 2:
+
+Input:
+N = 4, K = 3
+arr[] = {5,6,8,9}
+Output: 8 6 5 9.
+
+Solution :
+
+class Solution {
+    //Function to reverse every sub-array group of size k.
+    void reverseInGroups(ArrayList<Integer> arr, int n, int k) {
+        ArrayList<Integer> rev = new ArrayList<Integer>();
+        int h = 1;
+        while((h*k)<=n)
+        {
+            for(int i=(h*k)-1; i>=(h-1)*k; i--)
+            {
+                rev.add(arr.get(i));
+            }
+            h += 1;
+        }
+        h -= 1;
+        if((h*k) != n)
+        {
+            for(int i=n-1; i>=(h*k); i--)
+            {
+                rev.add(arr.get(i));
+            }
+        }
+        for(int i=0; i<n; i++)
+        {
+            arr.set(i, rev.get(i));
+        }
+    }
+}
