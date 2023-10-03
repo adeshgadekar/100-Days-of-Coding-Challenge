@@ -1,0 +1,105 @@
+Count Squares
+Consider a sample space S consisting of all perfect squares starting from 1, 4, 9 and so on. You are given a number N, you have to output the number of integers less than N in the sample space S.
+
+ 
+
+Example 1:
+
+Input :
+N = 9
+Output:
+2
+Explanation:
+1 and 4 are the only Perfect Squares
+less than 9. So, the Output is 2.
+Example 2:
+
+Input :
+N = 3
+Output:
+1
+Explanation:
+1 is the only Perfect Square
+less than 3. So, the Output is 1.\\
+
+
+Solution : 
+
+class Solution {
+    static int countSquares(int N) {
+        int x=1,count=0;
+        while( (x*x)<N ){
+            count++;
+            x++;
+        }
+    return count;
+    }
+}
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Implement Queue using array
+
+Implement a Queue using an Array. Queries in the Queue are of the following type:
+(i) 1 x   (a query of this type means  pushing 'x' into the queue)
+(ii) 2     (a query of this type means to pop element from queue and print the poped element)
+
+Example 1:
+
+Input:
+Q = 5
+Queries = 1 2 1 3 2 1 4 2
+Output: 2 3
+Explanation:
+In the first test case for query 
+1 2 the queue will be {2}
+1 3 the queue will be {2 3}
+2   poped element will be 2 the 
+    queue will be {3}
+1 4 the queue will be {3 4}
+2   poped element will be 3 
+Example 2:
+
+Input:
+Q = 4
+Queries = 1 3 2 2 1 4   
+Output: 3 -1
+Explanation:
+In the second testcase for query 
+1 3 the queue will be {3}
+2   poped element will be 3 the
+    queue will be empty
+2   there is no element in the
+    queue and hence -1
+1 4 the queue will be {4}. 
+
+
+Solution : 
+
+class MyQueue {
+
+    int front, rear;
+    int arr[] = new int[100005];
+ 
+    MyQueue(){
+        front=0;
+        rear=0;
+    }
+
+    void push(int x){
+        arr[rear]=x;
+        rear=rear+ 1;
+    } 
+
+    int pop(){
+        if(front==rear){
+            return -1;
+        }
+        
+        int top=front;
+        front=front+1;
+        return arr[top];
+    }
+}
