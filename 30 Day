@@ -1,0 +1,117 @@
+Check for Balanced Tree
+
+Given a binary tree, find if it is height balanced or not. 
+A tree is height balanced if difference between heights of left and right subtrees is not more than one for all nodes of tree. 
+
+A height balanced tree
+        1
+     /     \
+   10      39
+  /
+5
+
+An unbalanced tree
+        1
+     /    
+   10   
+  /
+5
+
+Example 1:
+
+Input:
+      1
+    /
+   2
+    \
+     3 
+Output: 0
+Explanation: The max difference in height
+of left subtree and right subtree is 2,
+which is greater than 1. Hence unbalanced
+Example 2:
+
+Input:
+       10
+     /   \
+    20   30 
+  /   \
+ 40   60
+Output: 1
+Explanation: The max difference in height
+of left subtree and right subtree is 1.
+Hence balanced. 
+
+Solution : 
+
+class Tree
+{
+    
+    boolean isBalanced(Node root)
+    {
+	
+	    if(check(root)>0) return true;
+	    return false;
+    }
+    int check(Node root){
+        if(root==null) return 0;
+        int l = check(root.left);
+        if(l==-1) return -1;
+        int r = check(root.right);
+        if(r==-1) return -1;
+        if(Math.abs(l-r)>1) return -1;
+        return 1+Math.max(l,r);
+    }
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Bit Difference
+
+You are given two numbers A and B. The task is to count the number of bits needed to be flipped to convert A to B.
+
+Example 1:
+
+Input: A = 10, B = 20
+Output: 4
+Explanation:
+A  = 01010
+B  = 10100
+As we can see, the bits of A that need 
+to be flipped are 01010. If we flip 
+these bits, we get 10100, which is B.
+Example 2:
+
+Input: A = 20, B = 25
+Output: 3
+Explanation:
+A  = 10100
+B  = 11001
+As we can see, the bits of A that need 
+to be flipped are 10100. If we flip 
+these bits, we get 11001, which is B.
+
+
+Solution : 
+
+class Solution{
+    
+    // Function to find number of bits needed to be flipped to convert A to B
+    public static int countBitsFlip(int a, int b){
+        
+         int count=0; 
+        int n=a ^ b;
+        
+        while((n)>0)
+        {
+            count=count+(n&1);
+            n=n>>1;
+            
+        }
+        return count;
+        
+    }
+    
+    
+}
