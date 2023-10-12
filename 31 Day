@@ -1,0 +1,92 @@
+Missing number in array
+
+Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
+
+Example 1:
+
+Input:
+N = 5
+A[] = {1,2,3,5}
+Output: 4
+Example 2:
+
+Input:
+N = 10
+A[] = {6,1,2,8,3,4,7,10,5}
+Output: 9.
+
+
+Solution  :  
+
+class Solution {
+    int missingNumber(int array[], int n) {
+        int N = array.length+1;
+        int sum =0;
+        for(int i=0;i<array.length;i++){
+            sum=sum+array[i];
+        }
+        int tsum =0;
+        for(int i=0;i<=N;i++){
+            tsum=tsum+i;
+        }
+        n=tsum-sum;
+    return n;
+    }
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====
+
+
+
+Maximum Occuring Character
+BasicAccuracy: 53.55%Submissions: 82K+Points: 1
+Hack you way to glory and win from a cash pool prize of INR 15,000. Register for free now
+
+banner
+Given a string str of lowercase alphabets. The task is to find the maximum occurring character in the string str. If more than one character occurs the maximum number of time then print the lexicographically smaller character.
+
+Example 1:
+
+Input:
+str = testsample
+Output: e
+Explanation: e is the character which
+is having the highest frequency.
+Example 2:
+
+Input:
+str = output
+Output: t
+Explanation:  t and u are the characters
+with the same frequency, but t is
+lexicographically smaller.
+
+Solution  :  
+
+
+class Solution
+{
+    //Function to find the maximum occurring character in a string.
+    public static char getMaxOccuringChar(String str)
+    {
+        int max=0;
+        char s[]=str.toCharArray();
+        Arrays.sort(s);
+        Map<Integer,Character>m=new TreeMap<Integer,Character>();
+        for(int i=0;i<str.length();i++){
+            int c=0;
+           for(int j=0;j<str.length();j++){
+            if(s[j]==s[i]) 
+            c++;
+            } 
+            if(c>max)
+            {
+             max=c;
+             if(!m.containsValue(s[i]))
+             m.put(c,s[i]);
+            }
+        }
+      return m.get(max);
+    }
+    
+}
